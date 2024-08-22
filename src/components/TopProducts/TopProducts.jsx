@@ -3,6 +3,7 @@ import Img1 from "../../assets/shirt/shirt.png";
 import Img2 from "../../assets/shirt/shirt2.png";
 import Img3 from "../../assets/shirt/shirt3.png";
 import { FaStar } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 const ProductsData = [
   {
@@ -27,6 +28,7 @@ const ProductsData = [
       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ];
+
 const TopProducts = ({ handleOrderPopup }) => {
   return (
     <div>
@@ -48,6 +50,7 @@ const TopProducts = ({ handleOrderPopup }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
           {ProductsData.map((data) => (
             <div
+              key={data.id}  // Added key prop here
               data-aos="zoom-in"
               className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80 dark:hover:bg-primary hover:text-white relative shadow-xl duration-300 group max-w-[300px]"
             >
@@ -85,6 +88,11 @@ const TopProducts = ({ handleOrderPopup }) => {
       </div>
     </div>
   );
+};
+
+// PropTypes validation
+TopProducts.propTypes = {
+  handleOrderPopup: PropTypes.func.isRequired,
 };
 
 export default TopProducts;

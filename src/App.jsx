@@ -1,4 +1,5 @@
 import React from "react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Products from "./components/Products/Products";
@@ -11,12 +12,14 @@ import Testimonials from "./components/Testimonials/Testimonials";
 import Footer from "./components/Footer/Footer";
 import Popup from "./components/Popup/Popup";
 
+
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
 
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
   };
+
   React.useEffect(() => {
     AOS.init({
       offset: 100,
@@ -43,4 +46,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
